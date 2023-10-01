@@ -25,7 +25,7 @@ public class ChangeColor : MonoBehaviour
     void Update()
     {
 
-        if (x < 0 || x > 3)
+        if (x < 0 || x > material.Length)
         {
             x = 0;
             return;

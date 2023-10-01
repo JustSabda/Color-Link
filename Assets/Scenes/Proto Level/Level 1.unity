@@ -5262,7 +5262,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -450.5, y: 232}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1843438703
@@ -5278,7 +5278,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerText: {fileID: 773326223}
-  remainTime: 80
+  remainTime: 60
 --- !u!114 &1845832084 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7121386220968116693, guid: 5826a0f75fb67e44b82864f6d1c95a4f, type: 3}
@@ -31253,7 +31253,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -2492928643728520890, guid: d30b5cdb41854f54987b46a86b46f3fb, type: 3}
+  - {fileID: -876546973899608171, guid: 11ecbcab9cf40404db20084cfa7da901, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -62617,7 +62617,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -2492928643728520890, guid: d30b5cdb41854f54987b46a86b46f3fb, type: 3}
+  - {fileID: -876546973899608171, guid: 11ecbcab9cf40404db20084cfa7da901, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
