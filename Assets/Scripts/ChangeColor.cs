@@ -9,6 +9,7 @@ public class ChangeColor : MonoBehaviour
     public int x;
     Renderer rend;
 
+
     private Platform platform;
 
     // Start is called before the first frame update

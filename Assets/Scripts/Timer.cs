@@ -8,7 +8,10 @@ public class Timer : MonoBehaviour
     public static Timer Instance { get; private set; }
     
     [SerializeField] TextMeshProUGUI timerText;
+    [SerializeField] TextMeshProUGUI timerWinText;
     [SerializeField] public float remainTime;
+
+    float gameTime;
 
     // Start is called before the first frame update
 
@@ -43,9 +46,25 @@ public class Timer : MonoBehaviour
 
         }
 
+        if(GameManager.Instance.isWin == false && GameManager.Instance.isLose == false)
+        {
+            gameTime += Time.deltaTime;
+        }
+
+
+        timerText.text = remainTime.ToString("0");
         //remainTime += Time.deltaTime;
-        int minute = Mathf.FloorToInt(remainTime / 60);
-        int seconds = Mathf.FloorToInt(remainTime % 60);
-        timerText.text = string.Format("{0:00}:{1:00}", minute, seconds);
+        int minute = Mathf.FloorToInt(gameTime / 60);
+        int seconds = Mathf.FloorToInt(gameTime % 60);
+        //timerWinText.text = string.Format("{minute}:{seconds}", minute, seconds);
+
+        if (minute == 0)
+            timerWinText.text = seconds + " second";
+        else if (seconds == 0)
+            timerWinText.text = minute + " minute";
+        else if (seconds != 0 && minute != 0)
+            timerWinText.text = minute + " minute " + seconds + " second";
+       
+
     }
 }

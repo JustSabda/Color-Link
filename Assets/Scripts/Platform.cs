@@ -16,7 +16,9 @@ public class Platform : MonoBehaviour
 
     private int x1,x2,x3,x4;
 
-    public bool flagConneted;
+    [HideInInspector] public bool flagConneted;
+
+    [Header("Flag")]
     public bool isFlag;
    
 
@@ -81,7 +83,7 @@ public class Platform : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player") && !isGenerator)
+        if (other.gameObject.CompareTag("Player") && !isGenerator && !isFlag)
         {
             if (other.GetComponent<GridMovement>().hadFlag == true)
             {
