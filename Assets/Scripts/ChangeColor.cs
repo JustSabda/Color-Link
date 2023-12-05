@@ -17,7 +17,8 @@ public class ChangeColor : MonoBehaviour
     {
         platform = GetComponent<Platform>();
         x = 0;
-        rend = GetComponent<Renderer>();
+        rend = transform.GetChild(0).GetComponent<Renderer>();
+        
         rend.enabled = true;
         rend.sharedMaterial = material[x];
     }

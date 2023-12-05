@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class UIManager : MonoBehaviour
@@ -22,11 +23,9 @@ public class UIManager : MonoBehaviour
     // Start is called before the first frame update
     [Header("MusicBtn")]
     public GameObject musicBtnOn;
-    public GameObject musicBtnOff;
 
     [Header("SFXBtn")]
     public GameObject SFXBtnOn;
-    public GameObject SFXBtnOff;
 
     bool soundPlayWin = true;
     bool soundPlayLose = true;
@@ -46,15 +45,17 @@ public class UIManager : MonoBehaviour
     }
     private void Start()
     {
-        if(panelWin != null)
+        if (SceneManager.GetActiveScene().name != ("MainMenu"))
         {
-            panelWin.SetActive(false);
+            if (panelWin != null)
+            {
+                panelWin.SetActive(false);
+            }
+            if (panelLose != null)
+            {
+                panelLose.SetActive(false);
+            }
         }
-        if (panelLose != null)
-        {
-            panelLose.SetActive(false);
-        }
-        
     }
 
 
@@ -63,57 +64,54 @@ public class UIManager : MonoBehaviour
     private void Update()
     {
 
-
-
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (SceneManager.GetActiveScene().name != ("MainMenu"))
         {
-            isPaused = !isPaused;
-            if (isPaused)
+
+            if (Input.GetKeyDown(KeyCode.Escape))
             {
-                Pause();
+                isPaused = !isPaused;
+                if (isPaused)
+                {
+                    Pause();
+                }
+                else
+                {
+                    Resume();
+                }
             }
-            else
+
+            if (GameManager.Instance.isWin == true && panelWin != null)
             {
-                Resume();
+                panelWin.SetActive(true);
+                //AudioManager.Instance.PlaySFX("SFX_Win");
+                //soundPlayWin = false;
+            }
+
+            if (GameManager.Instance.isLose == true && panelLose != null)
+            {
+                panelLose.SetActive(true);
+                //AudioManager.Instance.PlaySFX("SFX_Lose");
+                //soundPlayLose = false;
             }
         }
 
-        //if (!AudioManager.Instance.musicSource.mute)
-        //{
-        //    musicBtnOn.SetActive(true);
-        //    musicBtnOff.SetActive(false);
-        //}
-        //else
-        //{
-        //    musicBtnOn.SetActive(false);
-        //    musicBtnOff.SetActive(true);
-        //}
+        if (!AudioManager.Instance.musicSource.mute)
+        {
+            musicBtnOn.SetActive(true);
+        }
+        else
+        {
+            musicBtnOn.SetActive(false);
+        }
 
-        //if (!AudioManager.Instance.sfxSource.mute)
-        //{
-        //    SFXBtnOn.SetActive(true);
-        //    SFXBtnOff.SetActive(false);
-        //}
-        //else
-        //{
-        //    SFXBtnOn.SetActive(false);
-        //    SFXBtnOff.SetActive(true);
-        //}
-
-
-        //if (GameManager.Instance.isWin == true && panelWin != null && soundPlayWin == true)
-        //{
-        //    panelWin.SetActive(true);
-        //    AudioManager.Instance.PlaySFX("SFX_Win");
-        //    soundPlayWin = false;
-        //}
-
-        //if (GameManager.Instance.isLose == true && panelLose != null && soundPlayLose == true)
-        //{
-        //    panelLose.SetActive(true);
-        //    AudioManager.Instance.PlaySFX("SFX_Lose");
-        //    soundPlayLose = false;
-        //}
+        if (!AudioManager.Instance.sfxSource.mute)
+        {
+            SFXBtnOn.SetActive(true);
+        }
+        else
+        {
+            SFXBtnOn.SetActive(false);
+        }
 
     }
 

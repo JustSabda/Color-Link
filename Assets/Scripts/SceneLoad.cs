@@ -9,7 +9,8 @@ public class SceneLoad : MonoBehaviour
     public GameObject selectLevelPanel;
     public GameObject creditPanel;
     public GameObject settingsPanel;
-    
+
+    bool settings = false;
 
     //public GameObject pausePanel;
     public static SceneLoad Instance { get; private set; }
@@ -124,17 +125,12 @@ public class SceneLoad : MonoBehaviour
 
     public void SettingPanel()
     {
-        if (menuPanel == null || selectLevelPanel == null || creditPanel == null || settingsPanel == null)
-        {
-            return;
-        }
-        else
-        {
-            menuPanel.SetActive(false);
+        settings = !settings;
+
+        if (settings == true)
             settingsPanel.SetActive(true);
-            creditPanel.SetActive(false);
-            selectLevelPanel.SetActive(false);
-        }
+        else
+            settingsPanel.SetActive(false);
     }
 
 

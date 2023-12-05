@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class Timer : MonoBehaviour
@@ -9,9 +10,14 @@ public class Timer : MonoBehaviour
     
     [SerializeField] TextMeshProUGUI timerText;
     [SerializeField] TextMeshProUGUI timerWinText;
+    [SerializeField] private Image timerImg;
+    
     [SerializeField] public float remainTime;
+    float startTimer;
+
 
     float gameTime;
+
 
     // Start is called before the first frame update
 
@@ -29,7 +35,7 @@ public class Timer : MonoBehaviour
     }
     void Start()
     {
-        
+        startTimer = remainTime;
     }
 
     // Update is called once per frame
@@ -65,6 +71,10 @@ public class Timer : MonoBehaviour
         else if (seconds != 0 && minute != 0)
             timerWinText.text = minute + " minute " + seconds + " second";
        
+        if(timerImg != null)
+        timerImg.fillAmount = GameManager.Instance.GetPercent(remainTime, startTimer);
 
     }
+
+
 }

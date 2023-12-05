@@ -6,15 +6,12 @@ public class EnviChangeColor : MonoBehaviour
 {
     public Platform _platform;
 
-    public float speed;
     public Material startMaterial;
     public Material endMaterial;
     float startTime;
 
     Renderer rend;
-
-    public bool repeatble;
-
+    Material[] materials;
     bool go = false;
     bool activeBefore = false;
     private void Start()
@@ -22,7 +19,13 @@ public class EnviChangeColor : MonoBehaviour
         startTime = Time.time;
         rend = GetComponent<Renderer>();
 
-        rend.material = startMaterial;
+        materials = GetComponent<Renderer>().sharedMaterials;
+        for (int i = 0; i < materials.Length; i++)
+        {
+            materials[i] = startMaterial;
+        }
+
+        rend.sharedMaterials = materials;
     }
 
     private void Update()
@@ -44,25 +47,21 @@ public class EnviChangeColor : MonoBehaviour
 
         if (go)
         {
-            if (!repeatble)
+
+            for (int i = 0; i < materials.Length; i++)
             {
-                float lerp = (Time.time - startTime) * speed;
-                rend.material.Lerp(startMaterial, endMaterial, lerp);
+                materials[i] = endMaterial;
             }
-            else
-            {
-                float lerp = (Mathf.Sin(Time.time - startTime) * speed);
-                rend.material.Lerp(startMaterial, endMaterial, lerp);
-            }
+            rend.sharedMaterials = materials;
 
         }
-        else if(activeBefore)
+        else
         {
-            if (!repeatble)
+            for (int i = 0; i < materials.Length; i++)
             {
-                float lerp = (Time.time - startTime) * speed;
-                rend.material.Lerp(endMaterial, startMaterial, lerp);
+                materials[i] = startMaterial;
             }
+            rend.sharedMaterials = materials;
         }
     }
 
