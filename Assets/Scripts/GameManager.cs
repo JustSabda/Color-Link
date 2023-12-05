@@ -51,7 +51,8 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (SceneManager.GetActiveScene().name != ("MainMenu"))
+        var scene = SceneManager.GetActiveScene().buildIndex;
+        if (scene != 0 && scene != 1 && scene != 5)
         {
             if (platformList.All(go => go.GetComponent<Platform>().flagConneted == true))
             {

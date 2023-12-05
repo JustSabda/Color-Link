@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Wilberforce;
 
 public class SceneLoad : MonoBehaviour
 {
@@ -171,6 +172,7 @@ public class SceneLoad : MonoBehaviour
         
         SceneManager.LoadScene(0);
         AudioManager.Instance.x = true;
+
     }
 
     public void ContinueGame()
@@ -185,6 +187,27 @@ public class SceneLoad : MonoBehaviour
 
         AudioManager.Instance.x = true;
     }
+
+    public void openLevelNormal(int level)
+    {
+        
+        if (level != 1)
+            SceneManager.LoadScene(level);
+        else
+            NextLevel();
+
+    }
+
+    public void openLevelBlindMode(int level)
+    {
+        
+        if (level != 1)
+            SceneManager.LoadScene(level + 5);
+        else
+            SceneManager.LoadScene(5);
+
+    }
+
     public void Restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);

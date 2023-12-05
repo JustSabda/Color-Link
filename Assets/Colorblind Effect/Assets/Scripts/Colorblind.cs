@@ -13,21 +13,30 @@ namespace Wilberforce
     [AddComponentMenu("Image Effects/Color Adjustments/Colorblind")]
     public class Colorblind : MonoBehaviour
     {
+
+
         // public Parameters  
-		public int Type = 0;
+        public int Type = 0;
+
+        
 
         // private Parameters
-		public Shader colorblindShader;
+        public Shader colorblindShader;
         private bool isSupported;
         private Material ColorblindMaterial;
 
-		// method for logging if something goes wrong
+       
+
+
+        // method for logging if something goes wrong
         private void ReportError(string error)
         {
             if (Debug.isDebugBuild) Debug.Log("Colorblind Effect Error: " + error);
         }
 
-		// initialization method
+        
+
+        // initialization method
         void Start()
         {
 			// if shader is not set, try to find it first
@@ -129,9 +138,15 @@ namespace Wilberforce
 	// custom gui for inspector
 	[CustomEditor(typeof(Colorblind))]
 	public class ColorblindEditor : Editor
-	{	
-		// names appearing in the dropdown menu
-		private readonly GUIContent[] typeTexts = new GUIContent[4] {
+	{
+        
+
+   
+ 
+
+
+        // names appearing in the dropdown menu
+        private readonly GUIContent[] typeTexts = new GUIContent[4] {
 			new GUIContent("Normal Vision"),
 			new GUIContent("Protanopia"),
 			new GUIContent("Deuteranopia"),
@@ -143,6 +158,8 @@ namespace Wilberforce
 		// numbers passed to shader - indices of color-shifting matrices
 		private readonly int[] typeInts = new int[4] { 0, 1, 2, 3 };
 
+        
+
 		// this method contains the custom gui for editor
 		override public void OnInspectorGUI()
 		{
@@ -150,15 +167,20 @@ namespace Wilberforce
 			var colorblindScript = target as Colorblind;
 
             // bind the 'Type' parameter of the Colorblind script to dropdown in GUI
+
+
             colorblindScript.Type = EditorGUILayout.IntPopup(typeLabelContent, colorblindScript.Type, typeTexts, typeInts);
 
-			// if user made some changes (selected new value from the dropdown) we have to forward the notification
-			if (GUI.changed)
+
+            // if user made some changes (selected new value from the dropdown) we have to forward the notification
+            if (GUI.changed)
 			{
 				// mark as dirty
 				EditorUtility.SetDirty(target);
 			}
 		}
-	}
+
+      
+    }
 	#endif
 }
