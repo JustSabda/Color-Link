@@ -37,8 +37,5 @@ public class ChangeColor : MonoBehaviour
         rend.sharedMaterial = material[x];
         x = platform.color;
 
-
-
-
     }
 }

@@ -80,18 +80,18 @@ public class UIManager : MonoBehaviour
                 }
             }
 
-            if (GameManager.Instance.isWin == true && panelWin != null)
+            if (GameManager.Instance.isWin == true && panelWin != null && soundPlayWin == true )
             {
                 panelWin.SetActive(true);
-                //AudioManager.Instance.PlaySFX("SFX_Win");
-                //soundPlayWin = false;
+                AudioManager.Instance.PlaySFX("WinSFX");
+                soundPlayWin = false;
             }
 
-            if (GameManager.Instance.isLose == true && panelLose != null)
+            if (GameManager.Instance.isLose == true && panelLose != null && soundPlayLose == true)
             {
                 panelLose.SetActive(true);
-                //AudioManager.Instance.PlaySFX("SFX_Lose");
-                //soundPlayLose = false;
+                AudioManager.Instance.PlaySFX("LoseSFX");
+                soundPlayLose = false;
             }
         }
 

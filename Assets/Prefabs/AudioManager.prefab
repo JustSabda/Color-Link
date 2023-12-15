@@ -303,7 +303,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   musicSounds: []
-  sfxSounds: []
+  sfxSounds:
+  - name: WinSFX
+    clip: {fileID: 8300000, guid: 18dbd810ced5d0f49a185ee3421c7f58, type: 3}
+  - name: LoseSFX
+    clip: {fileID: 8300000, guid: 22924f61d2133074fbdd6a65a3509935, type: 3}
+  - name: ConnectSFX
+    clip: {fileID: 8300000, guid: b1badf04de394ce4195abb4492931b37, type: 3}
+  - name: DiconnectSFX
+    clip: {fileID: 8300000, guid: b4647bf041d64c54b991f179fe8e5297, type: 3}
   musicSource: {fileID: 1418083489052572965}
   sfxSource: {fileID: 1418083489730323288}
   x: 1

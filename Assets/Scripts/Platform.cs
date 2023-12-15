@@ -14,6 +14,7 @@ public class Platform : MonoBehaviour
 
     public Checker[] checker;
 
+
     private int x1,x2,x3,x4;
 
     [HideInInspector] public bool flagConneted;
@@ -31,6 +32,8 @@ public class Platform : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+
         x1 = checker[0].x;
         x2 = checker[1].x;
         x3 = checker[2].x;
@@ -43,7 +46,7 @@ public class Platform : MonoBehaviour
         }
         else
         {
-            if ((x1 + x2 + x3 + x4) > 0)
+            if ((x1+x2+x3+x4) > 0)
             {
                 isConnected = true;
                 
@@ -60,6 +63,7 @@ public class Platform : MonoBehaviour
         }
         
     }
+
 
     private void OnTriggerStay(Collider other)
     {

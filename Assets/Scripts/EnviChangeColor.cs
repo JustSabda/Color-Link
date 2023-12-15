@@ -8,15 +8,16 @@ public class EnviChangeColor : MonoBehaviour
 
     public Material startMaterial;
     public Material endMaterial;
-    float startTime;
 
     Renderer rend;
     Material[] materials;
     bool go = false;
-    bool activeBefore = false;
+
+
+    bool sfxStopConnect = false;
+    bool sfxStopDisconnect = false;
     private void Start()
     {
-        startTime = Time.time;
         rend = GetComponent<Renderer>();
 
         materials = GetComponent<Renderer>().sharedMaterials;
@@ -30,13 +31,12 @@ public class EnviChangeColor : MonoBehaviour
 
     private void Update()
     {
-        
+
         if(_platform != null)
         {
             if (_platform.flagConneted == true)
             {
                 go = true;
-                activeBefore = true;
             }
             else
             {
@@ -54,6 +54,12 @@ public class EnviChangeColor : MonoBehaviour
             }
             rend.sharedMaterials = materials;
 
+            if (!sfxStopConnect)
+            {
+                AudioManager.Instance.PlaySFX("ConnectSFX");
+                sfxStopConnect = true;
+            }
+            sfxStopDisconnect = false;
         }
         else
         {
@@ -62,6 +68,14 @@ public class EnviChangeColor : MonoBehaviour
                 materials[i] = startMaterial;
             }
             rend.sharedMaterials = materials;
+
+
+            if (!sfxStopDisconnect)
+            {
+                AudioManager.Instance.PlaySFX("DiconnectSFX");
+                sfxStopDisconnect = true;
+            }
+            sfxStopConnect = false;
         }
     }
 
