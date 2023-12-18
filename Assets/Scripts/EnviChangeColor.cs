@@ -11,11 +11,11 @@ public class EnviChangeColor : MonoBehaviour
 
     Renderer rend;
     Material[] materials;
-    bool go = false;
+    public bool go = false;
 
 
     bool sfxStopConnect = false;
-    bool sfxStopDisconnect = false;
+    bool sfxStopDisconnect = true;
     private void Start()
     {
         rend = GetComponent<Renderer>();

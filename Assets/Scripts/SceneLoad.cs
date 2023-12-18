@@ -13,20 +13,12 @@ public class SceneLoad : MonoBehaviour
 
     bool settings = false;
 
-    //public GameObject pausePanel;
     public static SceneLoad Instance { get; private set; }
 
     private int currentSceneIndex;
     private int sceneToContinue;
 
 
-    //[Header("MusicBtn")]
-    //public GameObject musicBtnOn;
-    //public GameObject musicBtnOff;
-
-    //[Header("SFXBtn")]
-    //public GameObject SFXBtnOn;
-    //public GameObject SFXBtnOff;
 
     private void Awake()
     {
@@ -45,45 +37,26 @@ public class SceneLoad : MonoBehaviour
     {
         Time.timeScale = 1f;
 
-        //if (AudioManager.Instance.x == true)
-        //{
-        //    if (SceneManager.GetActiveScene().name == ("MainMenu"))
-
-        //    {
-        //        AudioManager.Instance.PlayMusic("MainMenu");
-        //    }
-
-        //    AudioManager.Instance.x = false;
-        //}
-
-    }
-
-    private void Update()
-    {
-        if (SceneManager.GetActiveScene().name == ("MainMenu"))
+        if (AudioManager.Instance.x == true)
         {
-            //if (!AudioManager.Instance.musicSource.mute)
-            //{
-            //    musicBtnOn.SetActive(true);
-            //    musicBtnOff.SetActive(false);
-            //}
-            //else
-            //{
-            //    musicBtnOn.SetActive(false);
-            //    musicBtnOff.SetActive(true);
-            //}
+            if (SceneManager.GetActiveScene().name == ("MainMenu"))
+            {
+                AudioManager.Instance.PlayMusic("MainMenu");
+            }
+            else if (SceneManager.GetActiveScene().name == ("Cutscene") ||
+                SceneManager.GetActiveScene().name == ("BlindColor Cutscene"))
+            {
+                AudioManager.Instance.PlayMusic("Cutscene");
+            }
+            else
+            {
+                AudioManager.Instance.PlayMusic("Level");
+            }
 
-            //if (!AudioManager.Instance.sfxSource.mute)
-            //{
-            //    SFXBtnOn.SetActive(true);
-            //    SFXBtnOff.SetActive(false);
-            //}
-            //else
-            //{
-            //    SFXBtnOn.SetActive(false);
-            //    SFXBtnOff.SetActive(true);
-            //}
+
+            AudioManager.Instance.x = false;
         }
+
     }
 
     public void musicBtn()
@@ -195,7 +168,7 @@ public class SceneLoad : MonoBehaviour
             SceneManager.LoadScene(level);
         else
             NextLevel();
-
+        AudioManager.Instance.x = true;
     }
 
     public void openLevelBlindMode(int level)
@@ -205,7 +178,7 @@ public class SceneLoad : MonoBehaviour
             SceneManager.LoadScene(level + 5);
         else
             SceneManager.LoadScene(5);
-
+        AudioManager.Instance.x = true;
     }
 
     public void Restart()

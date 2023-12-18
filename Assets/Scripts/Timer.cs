@@ -41,17 +41,19 @@ public class Timer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(remainTime > 0)
+        if (GameManager.Instance.isWin == false && GameManager.Instance.isLose == false)
         {
-            remainTime -= Time.deltaTime;
-        }
-        else if (remainTime < 0)
-        {
-            remainTime = 0;
-            //GameOver
+            if (remainTime > 0)
+            {
+                remainTime -= Time.deltaTime;
+            }
+            else if (remainTime < 0)
+            {
+                remainTime = 0;
+                //GameOver
 
+            }
         }
-
         if(GameManager.Instance.isWin == false && GameManager.Instance.isLose == false)
         {
             gameTime += Time.deltaTime;

@@ -61,29 +61,15 @@ public class Platform : MonoBehaviour
         {
             flagConneted = true;
         }
+        else
+        {
+            flagConneted = false;
+        }
         
     }
 
 
-    private void OnTriggerStay(Collider other)
-    {
-        /*
-        if (other.gameObject.CompareTag("Platform"))
-        {
-            if (other.GetComponent<Platform>().connected == true && color == other.GetComponent<Platform>().color)
-            {
-                connected = true;
-                x = true;
-            }
-            else
-            {
-                x = false;
-            }
-            
-        }
 
-        */
-    }
 
     private void OnTriggerEnter(Collider other)
     {
