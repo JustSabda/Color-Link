@@ -19,6 +19,10 @@ public class UIManager : MonoBehaviour
 
     public GameObject pausePanel;
 
+    public GameObject tutorialPanel;
+
+    public GameObject inGamePanel;
+
 
     // Start is called before the first frame update
     [Header("MusicBtn")]
@@ -55,7 +59,14 @@ public class UIManager : MonoBehaviour
             {
                 panelLose.SetActive(false);
             }
+
+            isPaused = true;
+            Time.timeScale = 0f;
+
+            UnhideCursor();
         }
+
+        
     }
 
 
@@ -136,14 +147,37 @@ public class UIManager : MonoBehaviour
         isPaused = true;
         pausePanel.SetActive(true);
         Time.timeScale = 0f;
+        UnhideCursor();
     }
     public void Resume()
     {
         isPaused = false;
         pausePanel.SetActive(false);
-        Time.timeScale = 1f;
 
+        Time.timeScale = 1f;
+        HideCursor();
+
+        if (tutorialPanel.activeSelf)
+        {
+            tutorialPanel.SetActive(false);
+            inGamePanel.SetActive(true);
+        }
+  
     }
+
+    public void HideCursor()
+    {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+
+
+    public void UnhideCursor()
+    {
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+    }
+
 
 
 }
