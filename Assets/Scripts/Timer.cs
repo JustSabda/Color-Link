@@ -62,16 +62,20 @@ public class Timer : MonoBehaviour
 
         timerText.text = remainTime.ToString("0");
         //remainTime += Time.deltaTime;
-        int minute = Mathf.FloorToInt(gameTime / 60);
-        int seconds = Mathf.FloorToInt(gameTime % 60);
+        //int minute = Mathf.FloorToInt(gameTime / 60);
+        //int seconds = Mathf.FloorToInt(gameTime % 60);
         //timerWinText.text = string.Format("{minute}:{seconds}", minute, seconds);
 
-        if (minute == 0)
-            timerWinText.text = seconds + " second";
-        else if (seconds == 0)
-            timerWinText.text = minute + " minute";
-        else if (seconds != 0 && minute != 0)
-            timerWinText.text = minute + " minute " + seconds + " second";
+        int seconds = Mathf.FloorToInt(gameTime);
+
+        timerWinText.text = seconds + " second";
+
+        //if (minute == 0)
+        //    timerWinText.text = seconds + " second";
+        //else if (seconds == 0)
+        //    timerWinText.text = minute + " minute";
+        //else if (seconds != 0 && minute != 0)
+        //    timerWinText.text = minute + " minute " + seconds + " second";
        
         if(timerImg != null)
         timerImg.fillAmount = GameManager.Instance.GetPercent(remainTime, startTimer);
